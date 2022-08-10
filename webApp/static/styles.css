@@ -1,0 +1,103 @@
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css"); */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css");
+
+
+
+.container{
+    max-width: 500px;
+   height: 500px;   
+ 
+}
+
+.card{
+    margin-top: 10%;
+    margin-left: 27%;
+    border-radius : 10px;
+    padding-left: 4%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    /* padding-top: 200px;
+    */
+    background-color: #ffff; 
+    height: 400px;
+    width: 500px; 
+    padding-top: 5%;
+}
+
+
+.card h2{
+    margin-left: 35%;
+}
+
+.btn{
+    width: 415px;
+}
+
+.containerForcalendar{
+    max-width: 95%;
+    height: 100%; 
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top:2%;
+    padding-bottom: 2%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.navbar h1{
+    font-family: 'Anton', sans-serif;
+    color:white;
+    text-shadow: 2px 2px 5px black;
+    margin-right: 73%;
+}
+
+.navbar-light{
+    /* background-image: url('images/navbar-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+     */
+    background-color: #DE76A7 ;
+    /* background-color: #2F57AB ; */
+}
+
+.containerForDay{
+        max-width: 95%;
+        height: 10%; 
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-top:2%;
+        padding-bottom: 2%;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.containerForDay textarea{
+    height: 375px;
+    max-width: 792px;
+    display: block;
+    line-height: 3.2rem;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+textarea{
+    background-color: #ffff;
+    border-radius: 3px;
+    border: 1px solid #e3ebee;
+    overflow: auto;
+    resize: none;
+    padding: 1rem 1.6rem;
+    font-weight: 400;
+
+}

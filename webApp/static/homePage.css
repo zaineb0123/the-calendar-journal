@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+  }
+
+body{
+    background-image: url('images/hero-image.jpg');
+    height: 350px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+    
+
+    
+}
+
+
+.hero{
+    
+    /* background-image: url('diary.jpg');
+    height: 350px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+     */
+
+}
+
+.btn{
+    width: 100%;
+    
+}
+
+.forButtons .btn{
+    background-color: #2F57AB;
+    outline: none;
+    font-size: 20px;
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+.forButtons .btn:hover{
+    background-color: #ffff;
+    color: #DE76A7;
+}
+
+
+.forButtons{
+margin-top: 10%;
+}
+
+
+.forButtons .row{
+    margin-top: 20px;
+}
+
+.section{
+   
+}
+
+.container{
+    /* box-shadow: white;
+    background: rgba(255,255,255,0.1); */
+    margin-top: 8%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+
+
+.containerTwo{
+    
+    justify-content:space-between;
+    
+    
+}
+
+h1{
+    
+    font-family: 'Anton', sans-serif;
+    color:white;
+    text-shadow: 2px 2px 5px black  
+}
+
+h3{
+    font-family: 'Anton', sans-serif;
+    font-weight: 100;
+    font-size: 200px;
+    /* text-shadow: 2px 2px #2F57AB    ; */
+    color: white;
+    text-transform: uppercase;
+}
+
+
+
+h2{
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 300px;
+    text-align: center;
+    animation: mymove 5s infinite;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* animation-timing-function: linear; */
+
+}
+
+h5{
+  
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.flex{
+    
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+
+img{
+
+    width: 400px; 
+    height: auto;
+  
+  
+}
+
+
+.main-text{
+    margin-left: 68%;
+    margin-right: 5%;
+    margin-top: 5%;
+
+}
+
+
+.form-inputs{
+    width: 500px;
+}
+
+
+h6 .signinLink{
+    text-decoration: underline;
+    color: #2F57AB;
+}

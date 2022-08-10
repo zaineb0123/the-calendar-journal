@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <link href="{% static 'thecalendarJournal/homePage.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="containerTwo flex">
+            <h1>The Calendar Journal</h1>
+        </div>
+    </div>
+    <div class="section">
+       
+            <div class="main-text">
+                <h2>Boost your Productivity</h2>
+                <h2>Or</h2>
+                <h2 style="color: white;">UNWIND!</h2>
+                <h5>Plan your day or use our calendar to journal your thoughts, build
+                    healthy habits and keep track of your progress.
+                </h5>
+        
+                <!-- <form method="POST">{% csrf_token %}
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control form-control-lg" id="inputEmail3" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control form-control-lg" id="inputPassword3" placeholder="Password">
+                        </div>
+                      </div>
+                      
+                </form> -->
+                <div class="forButtons">
+                    <div class="row">
+                <button class="btn btn-primary">Get Started</button>
+            </div>
+            <div class="row">
+                <h6>Already a user?  <a class="signinLink" href="{% url 'login' %}">Sign in</a></h6>
+                <!-- <button class="btn btn-primary">Sign in</button> -->
+            </div>
+            </div>
+            </div>
+           
+
+        </div>
+    
+    
+  
+   
+</body>
+
+</html
