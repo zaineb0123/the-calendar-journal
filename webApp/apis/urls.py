@@ -4,7 +4,6 @@ from django.contrib import admin
 from webApp.apis import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path("", views.homePage, name="homePage"),
     path("login", views.login, name="login"),
     path("register", views.register, name="register"),
