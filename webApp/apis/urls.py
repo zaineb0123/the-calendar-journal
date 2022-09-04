@@ -4,11 +4,11 @@ from django.contrib import admin
 from webApp.apis import views
 
 urlpatterns = [
-    path("", views.homePage, name="homePage"),
-    path("login", views.login, name="login"),
-    path("register", views.register, name="register"),
-    path("calendar", views.calendar, name="calendar"),
-    path("day/", views.day, name="day")
+    # path("", views.homePage, name="homePage"),
+    # path("login", views.login, name="login"),
+    # path("register", views.register, name="register"),
+    # path("calendar", views.calendar, name="calendar"),
+    path("day/", views.get_day_data, name="day")
 ]
 
 # from django.urls import include, path

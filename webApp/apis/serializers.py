@@ -3,12 +3,12 @@ from webApp.models import User, Day, Category
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'groups']
 
-class DaySerializer(serializers.HyperlinkedModelSerializer):
+class DaySerializer(serializers.ModelSerializer):
     class Meta:
         model = Day
         fields = [
