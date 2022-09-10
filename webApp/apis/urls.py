@@ -9,7 +9,8 @@ urlpatterns = [
     path('day/<str:date>/<int:todoTaskID>/edit/', views.editTodoList, name="edit"),
     path('day/', views.addDay, name="addDay"),
     path('day/<str:date>/<int:todoTaskID>/remove', views.removeTodoList, name="removeTodoList"),
-    path('day/<str:date>/<int:dayID>/markDayComplete', views.markDayComplete, name="markDayComplete"),
+    path('day/<str:date>/<int:dayID>/dayUpdate', views.journalEntry, name="journalEntry"),
+    # path('day/<str:date>/<int:dayID>/removeJournalEntry', views.removeJournalEntry, name="removeJournalEntry"),
 
 ]
 
