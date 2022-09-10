@@ -32,15 +32,8 @@ from allauth.account.decorators import login_required
 @api_view(['GET'])
 def getDayData(request, date):
     user = request.user
-    print(user)
     data = Day.objects.get(date=date, userID=user)
-    # for entry in data:
-    print(data)
-    # print('data: ', data.id)
-    #get todo lists for this day
-    # todoEntries = DayTodoListSerializer.objects.filter(dayID=data.id)
 
-    # print('todoEntries',todoEntries)
     dayserializer = DaySerializer(data, many=False)
     todoEntries = TodoList.objects.filter(dayID=data.id)
     todoListSerializer = TodoListSerializer(todoEntries, many=True)
@@ -96,10 +89,24 @@ def editTodoList(request, date, todoTaskID):
 def removeTodoList(request, date, todoTaskID):
     todoTask = TodoList.objects.get(id=todoTaskID)  
     todoTask.delete()
-    return Response('Note was deleted!') 
+    return Response('Note entry has been deleted!') 
 
+@login_required
+@api_view(['POST'])
+def journalEntry(request, date, dayID):
+    dayEntry = Day.objects.get(id=dayID)   
+    serializer = DaySerializer(dayEntry, data=request.data)
 
+    if serializer.is_valid():
+        serializer.save()
     
+    return Response(serializer.data)
+    
+# @api_view(['DELETE'])
+# def removeJournalEntry(request, date, dayID):
+#     dayEntry = Day.objects.get(id=dayID)   
+#     dayEntry.delete()
+#     return Response('Journal entry has been deleted!') 
 
 # def homePage(request):
 #     return render(request, "main.dart")
