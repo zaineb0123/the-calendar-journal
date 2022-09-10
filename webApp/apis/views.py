@@ -32,15 +32,7 @@ from allauth.account.decorators import login_required
 @api_view(['GET'])
 def getDayData(request, date):
     user = request.user
-    print(user)
     data = Day.objects.get(date=date, userID=user)
-    # for entry in data:
-    print(data)
-    # print('data: ', data.id)
-    #get todo lists for this day
-    # todoEntries = DayTodoListSerializer.objects.filter(dayID=data.id)
-
-    # print('todoEntries',todoEntries)
     dayserializer = DaySerializer(data, many=False)
     todoEntries = TodoList.objects.filter(dayID=data.id)
     todoListSerializer = TodoListSerializer(todoEntries, many=True)
@@ -65,8 +57,6 @@ def addDay(request):
 @login_required
 @api_view(['POST'])
 def createTodoList(request, date, dayID):
-    print(request)
-
     data = request.data
     dayEntry = Day.objects.get(id=dayID)
     print(dayEntry.id)
@@ -98,7 +88,15 @@ def removeTodoList(request, date, todoTaskID):
     todoTask.delete()
     return Response('Note was deleted!') 
 
+@api_view(['PUT'])
+def markDayComplete(request, date, dayID):
+    dayEntry = Day.objects.get(id=dayID)   
+    serializer = DaySerializer(dayEntry, data=request.data)
 
+    if serializer.is_valid():
+        serializer.save()
+    
+    return Response(serializer.data)
     
 
 # def homePage(request):

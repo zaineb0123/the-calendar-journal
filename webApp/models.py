@@ -18,7 +18,6 @@ class Category(models.Model):
 
 class Day(models.Model):
     userID = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'user', null=True)
-    status = models.BooleanField(default=False)
     dayComplete = models.BooleanField(default=False)
     journal = models.CharField(max_length=2000, null=True, blank=True)
     date = models.DateField(auto_now=True, blank=True)
@@ -30,6 +29,7 @@ class Day(models.Model):
 class TodoList(models.Model):
     todoTask = models.CharField(max_length=1000, null=True, blank=True)
     dayID = models.ForeignKey(Day, on_delete=models.CASCADE, related_name = 'day_id', null=True) 
+    status = models.BooleanField(default=False)
 
     class Meta:
         db_table = "TodoList"

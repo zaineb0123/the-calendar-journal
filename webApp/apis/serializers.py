@@ -13,7 +13,6 @@ class DaySerializer(serializers.ModelSerializer):
         model = Day
         fields = [
         'userID',
-        'status',
         'dayComplete',
         'journal', 
         'date'
@@ -27,7 +26,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class TodoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = TodoList
-        fields = ['todoTask', 'dayID']
+        fields = ['todoTask', 'dayID', 'status',]
 
 class DayTodoListSerializer(serializers.ModelSerializer):
     lists = serializers.SerializerMethodField()
