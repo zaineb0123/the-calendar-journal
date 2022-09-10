@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import json
+from datetime import date
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.template.defaulttags import register
 from django.db import IntegrityError
@@ -9,8 +10,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response 
 from rest_framework.decorators import api_view
-from ..models import User, Day, Category
-from .serializers import UserSerializer, DaySerializer, CategorySerializer
+from ..models import User, Day, Category, TodoList
+from .serializers import UserSerializer, DaySerializer, CategorySerializer, TodoListSerializer, DayTodoListSerializer
+from allauth.account.decorators import login_required
+
+
 # from apps.lib import main
 
 # Create your views here.
@@ -23,12 +27,79 @@ from .serializers import UserSerializer, DaySerializer, CategorySerializer
 #         }
 #     ]
 
-@api_view(['GET'])
-def get_day_data(request):
-    day_data = Day.objects.all()
-    serializer = DaySerializer(day_data, many=True)
-    return Response(day_data)
 
+@login_required
+@api_view(['GET'])
+def getDayData(request, date):
+    user = request.user
+    print(user)
+    data = Day.objects.get(date=date, userID=user)
+    # for entry in data:
+    print(data)
+    # print('data: ', data.id)
+    #get todo lists for this day
+    # todoEntries = DayTodoListSerializer.objects.filter(dayID=data.id)
+
+    # print('todoEntries',todoEntries)
+    dayserializer = DaySerializer(data, many=False)
+    todoEntries = TodoList.objects.filter(dayID=data.id)
+    todoListSerializer = TodoListSerializer(todoEntries, many=True)
+
+    return Response({
+        "Day":dayserializer.data,
+        "todoList":todoListSerializer.data
+    })
+
+@login_required
+@api_view(['POST'])
+def addDay(request):
+    user = request.user
+    today = date.today()
+    dayEntry = Day.objects.create(
+        userID=user,
+        date=today
+    )
+    serializer = DaySerializer(dayEntry, many=False)
+    return Response(serializer.data)
+
+@login_required
+@api_view(['POST'])
+def createTodoList(request, date, dayID):
+    print(request)
+
+    data = request.data
+    dayEntry = Day.objects.get(id=dayID)
+    print(dayEntry.id)
+
+    if dayEntry:
+        todoEntry = TodoList.objects.create(
+            todoTask=data['todoTask'],
+            dayID = dayEntry, 
+        )
+        serializer = TodoListSerializer(todoEntry, many=False)
+        return Response(serializer.data)
+    else:
+        print("Error")
+
+@login_required
+@api_view(['PUT'])
+def editTodoList(request, date, todoTaskID):
+    todoTask = TodoList.objects.get(id=todoTaskID)   
+    serializer = TodoListSerializer(todoTask, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    
+    return Response(serializer.data)
+    
+@api_view(['DELETE'])
+def removeTodoList(request, date, todoTaskID):
+    todoTask = TodoList.objects.get(id=todoTaskID)  
+    todoTask.delete()
+    return Response('Note was deleted!') 
+
+
+    
 
 # def homePage(request):
 #     return render(request, "main.dart")

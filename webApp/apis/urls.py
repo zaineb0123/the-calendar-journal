@@ -4,11 +4,12 @@ from django.contrib import admin
 from webApp.apis import views
 
 urlpatterns = [
-    # path("", views.homePage, name="homePage"),
-    # path("login", views.login, name="login"),
-    # path("register", views.register, name="register"),
-    # path("calendar", views.calendar, name="calendar"),
-    path("day/", views.get_day_data, name="day")
+    path("day/<str:date>", views.getDayData, name="day"),
+    path("day/<str:date>/<int:dayID>/createTodo/", views.createTodoList, name="createTodoList"),
+    path('day/<str:date>/<int:todoTaskID>/edit/', views.editTodoList, name="edit"),
+    path('day/', views.addDay, name="addDay"),
+    path('day/<str:date>/<int:todoTaskID>/remove', views.removeTodoList, name="removeTodoList"),
+
 ]
 
 # from django.urls import include, path
