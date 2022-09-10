@@ -32,4 +32,4 @@ urlpatterns = [
     path('', include('webApp.apis.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-]
+]   

@@ -1,25 +1,41 @@
 # from django.contrib.auth.models import User
-from webApp.models import User, Day, Category
+from webApp.models import User, Day, Category, TodoList
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'groups']
+        fields = ['email', 'firstName', 'lastName']
 
 class DaySerializer(serializers.ModelSerializer):
     class Meta:
         model = Day
         fields = [
-        'posted_by',
-        'todoList',
+        'userID',
         'status',
         'dayComplete',
-        'journal'
+        'journal', 
+        'date'
         ]
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['categoryName', 'createdBy']
+
+class TodoListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TodoList
+        fields = ['todoTask', 'dayID']
+
+class DayTodoListSerializer(serializers.ModelSerializer):
+    lists = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Day
+        fields = '__all__'
+    
+    def getTodoList(self, obj):
+        data = TodoListSerializer(obj.lists.all(), many=True).data
+        return data

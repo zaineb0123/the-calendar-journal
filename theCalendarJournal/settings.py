@@ -120,6 +120,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        }
+    }
+}
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_USER_FIELDS = ['first_name', 'last_name', 'email']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
